@@ -47,8 +47,8 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-
 SQLitePCL.Batteries.Init();
+
 builder.WebHost.UseUrls("http://0.0.0.0:44389");
 builder.Services.AddCors(options =>
 {

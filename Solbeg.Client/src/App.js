@@ -78,6 +78,7 @@ const App = () => {
             setEditingEmployee(null);
             setError("");
             setShowForm(false);
+            fetchEmployees();
         } catch (error) {
             console.error("Ошибка при обновлении сотрудника:", error);
             setError("Ошибка при обновлении сотрудника.");
