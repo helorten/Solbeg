@@ -16,8 +16,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solbeg.Infrastructure", "..
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solbeg.Services", "..\Solbeg.Services\Solbeg.Services.csproj", "{92EDA72A-0908-47F2-84C8-DFADD7D9EFD9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{94EBB02F-0577-45C8-9AB5-99FECC51EC45} = {94EBB02F-0577-45C8-9AB5-99FECC51EC45}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solbeg.Data", "..\Solbeg.Data\Solbeg.Data.csproj", "{94EBB02F-0577-45C8-9AB5-99FECC51EC45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solbeg.Data", "..\Solbeg.Data\Solbeg.Data.csproj", "{94EBB02F-0577-45C8-9AB5-99FECC51EC45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solbeg.API", "..\Solbeg.API\Solbeg.API.csproj", "{7E419C8A-CB9B-411B-907E-EBED790DA5AF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92EDA72A-0908-47F2-84C8-DFADD7D9EFD9} = {92EDA72A-0908-47F2-84C8-DFADD7D9EFD9}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +49,10 @@ Global
 		{94EBB02F-0577-45C8-9AB5-99FECC51EC45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94EBB02F-0577-45C8-9AB5-99FECC51EC45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94EBB02F-0577-45C8-9AB5-99FECC51EC45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E419C8A-CB9B-411B-907E-EBED790DA5AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E419C8A-CB9B-411B-907E-EBED790DA5AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E419C8A-CB9B-411B-907E-EBED790DA5AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E419C8A-CB9B-411B-907E-EBED790DA5AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

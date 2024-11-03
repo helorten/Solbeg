@@ -19,6 +19,6 @@ namespace Solbeg.Data
             optionsBuilder.UseSqlite(configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("Solbeg.Infrastructure"));
         }
 
-        public DbSet<Users> Users { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

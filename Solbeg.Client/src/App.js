@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import EmployeeForm from "./components/EmployeeForm";
 import EmployeeList from "./components/EmployeeList";
+import "./ButtonStyles.css";
 
 const App = () => {
     const [employees, setEmployees] = useState([]);
@@ -18,6 +19,7 @@ const App = () => {
     const fetchEmployees = async () => {
         try {
             const response = await axios.get("http://localhost:44389/api/user/get_all_users");
+            console.info(response.data.users);
             setEmployees(response.data.users);
         } catch (error) {
             console.error("Ошибка при получении списка сотрудников:", error);
@@ -62,6 +64,7 @@ const App = () => {
     const handleUpdateEmployee = async () => {
         if (!editingEmployee.firstName || !editingEmployee.lastName || !editingEmployee.sex || editingEmployee.age < 18 || editingEmployee.age > 100) {
             setError("Пожалуйста, заполните все обязательные поля и убедитесь, что возраст находится в диапазоне 18-100.");
+            fetchEmployees();
             return;
         }
 
@@ -126,10 +129,10 @@ const App = () => {
         <div>
             {error && <p style={{ color: "red" }}>{error}</p>}
 
-            <button onClick={openAddEmployeeForm} style={{ margin: "20px 0" }}>
+            <button onClick={openAddEmployeeForm} className="custom-button">
                 Добавить нового сотрудника
             </button>
-            <button onClick={handleDeleteSelectedEmployees} disabled={selectedEmployees.length === 0} style={{ margin: "20px 0" }}>
+            <button onClick={handleDeleteSelectedEmployees} disabled={selectedEmployees.length === 0} className="custom-button">
                 Удалить выделенных сотрудников
             </button>
 
@@ -144,7 +147,7 @@ const App = () => {
                     borderRadius: "5px",
                     backgroundColor: "white",
                     zIndex: 1000,
-                    width: "300px" // Устанавливаем фиксированную ширину формы
+                    width: "300px"
                 }}>
                     <EmployeeForm
                         employeeData={editingEmployee || newEmployee}

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Solbeg.Data.Enums;
 
 namespace Solbeg.Data.Models
 {
-    public class Users
+    public class User
     {
         public int Id { get; set; }
         public required string FirstName { get; set; }

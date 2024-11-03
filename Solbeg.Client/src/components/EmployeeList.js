@@ -1,9 +1,9 @@
 import React from 'react';
-import './EmployeeList.css'; // Импортируем CSS файл для стилизации
+import './EmployeeList.css';
 
 const EmployeeList = ({ employees, selectedEmployees, onSelect, onEdit }) => {
     return (
-        <div className="table-container" style={{ maxHeight: '250px', overflowY: 'auto' }}> {/* Добавили прокрутку */}
+        <div className="table-container" style={{ maxHeight: '250px', overflowY: 'auto' }}> {}
             <table>
                 <thead>
                     <tr>
@@ -19,9 +19,9 @@ const EmployeeList = ({ employees, selectedEmployees, onSelect, onEdit }) => {
                             <tr
                                 key={employee.id}
                                 style={{
-                                    backgroundColor: index % 2 === 0 ? '#f9f9f9' : '#e9e9e9', // Цвет для четных и нечетных строк
+                                    backgroundColor: index % 2 === 0 ? '#f9f9f9' : '#e9e9e9',
                                 }}
-                                onClick={() => onEdit(employee)} // Обработчик клика на строку
+                                onClick={() => onEdit(employee)}
                             >
                                 <td>
                                     <input
@@ -32,12 +32,12 @@ const EmployeeList = ({ employees, selectedEmployees, onSelect, onEdit }) => {
                                 </td>
                                 <td>{`${employee.firstName} ${employee.lastName}`}</td>
                                 <td>{employee.age} лет</td>
-                                <td>{employee.sex === "0" ? "Муж" : "Жен"}</td>
+                                <td>{employee.sex === 0 ? "Муж" : "Жен"}</td>
                             </tr>
                         ))
                     ) : (
                         <tr>
-                            <td colSpan="4">Нет сотрудников для отображения</td> {/* Сообщение при отсутствии сотрудников */}
+                            <td colSpan="4">Нет сотрудников для отображения</td> {}
                         </tr>
                     )}
                 </tbody>

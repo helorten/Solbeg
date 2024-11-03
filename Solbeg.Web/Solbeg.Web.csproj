@@ -14,9 +14,11 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.10" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.9.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Solbeg.API\Solbeg.API.csproj" />
     <ProjectReference Include="..\Solbeg.Infrastructure\Solbeg.Infrastructure.csproj" />
   </ItemGroup>
 
