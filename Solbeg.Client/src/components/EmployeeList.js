@@ -1,54 +1,47 @@
-import React, { useState } from "react";
+import React from 'react';
+import './EmployeeList.css'; // Импортируем CSS файл для стилизации
 
-const EmployeeList = ({ employees, onEdit, onDelete, onDeleteSelected }) => {
-    const [selectedEmployees, setSelectedEmployees] = useState([]);
-
-    const handleSelectEmployee = (id) => {
-        setSelectedEmployees(prevSelected =>
-            prevSelected.includes(id)
-                ? prevSelected.filter(empId => empId !== id)
-                : [...prevSelected, id]
-        );
-    };
-
-    const handleSelectAll = () => {
-        if (selectedEmployees.length === employees.length) {
-            setSelectedEmployees([]); // Сбросить все выделения, если уже выбраны все сотрудники
-        } else {
-            setSelectedEmployees(employees.map(emp => emp.id)); // Выделить всех сотрудников
-        }
-    };
-
-    const handleDeleteSelected = () => {
-        if (selectedEmployees.length > 0) {
-            onDeleteSelected(selectedEmployees); // Передать выбранных сотрудников для удаления
-            setSelectedEmployees([]); // Очистить выделенные сотрудники после удаления
-        }
-    };
-
+const EmployeeList = ({ employees, selectedEmployees, onSelect, onEdit }) => {
     return (
-        <div>
-            <button onClick={handleSelectAll}>
-                {selectedEmployees.length === employees.length ? "Снять выделение со всех" : "Выделить всех"}
-            </button>
-            <button onClick={handleDeleteSelected} disabled={selectedEmployees.length === 0}>
-                Удалить выделенных сотрудников
-            </button>
-
-            <ul>
-                {employees.map(employee => (
-                    <li key={employee.id}>
-                        <input
-                            type="checkbox"
-                            checked={selectedEmployees.includes(employee.id)}
-                            onChange={() => handleSelectEmployee(employee.id)}
-                        />
-                        {employee.firstName} {employee.lastName}, {employee.age} лет
-                        <button onClick={() => onEdit(employee)}>Редактировать</button>
-                        <button onClick={() => onDelete(employee.id)}>Удалить</button>
-                    </li>
-                ))}
-            </ul>
+        <div className="table-container" style={{ maxHeight: '250px', overflowY: 'auto' }}> {/* Добавили прокрутку */}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Выбрать</th>
+                        <th>ФИО</th>
+                        <th>Возраст</th>
+                        <th>Пол</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {employees.length > 0 ? (
+                        employees.map((employee, index) => (
+                            <tr
+                                key={employee.id}
+                                style={{
+                                    backgroundColor: index % 2 === 0 ? '#f9f9f9' : '#e9e9e9', // Цвет для четных и нечетных строк
+                                }}
+                                onClick={() => onEdit(employee)} // Обработчик клика на строку
+                            >
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        checked={selectedEmployees.includes(employee.id)}
+                                        onChange={() => onSelect(employee.id)}
+                                    />
+                                </td>
+                                <td>{`${employee.firstName} ${employee.lastName}`}</td>
+                                <td>{employee.age} лет</td>
+                                <td>{employee.sex === "0" ? "Муж" : "Жен"}</td>
+                            </tr>
+                        ))
+                    ) : (
+                        <tr>
+                            <td colSpan="4">Нет сотрудников для отображения</td> {/* Сообщение при отсутствии сотрудников */}
+                        </tr>
+                    )}
+                </tbody>
+            </table>
         </div>
     );
 };
